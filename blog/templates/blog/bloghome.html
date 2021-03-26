@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+     <div class="container-fluid mt-2">
+         <div class="row">
+             <div class="col-md-2 mt-2">
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action active">
+                      All Category
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">Programming Language</a>
+                    <a href="#" class="list-group-item list-group-item-action">Web Framework</a>
+                    <a href="#" class="list-group-item list-group-item-action">Data Science</a>
+                    <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">Web developer</a>
+                  </div>
+             </div>
+              
+             <div class="col-md-7 mt-2">
+                 <div class=row>
+                     <div class="col-md-12">
+                        <section class="latest-posts"> 
+                            <div class="container">
+                            
+                              <div class="row">
+                                <div class="card-columns">
+                                {% for i in allPost %}
+                                
+                                <div class="card" style="width: 20rem;">
+                                  <img src="/media/{{i.photo}}" class="card-img-top" height="200px"  alt="...">
+                                  <div class="card-body">
+                                    <a href="{% url 'blogs:blogpost' i.slug %}" class="card-title"><h5>{{i.title}}</h5></a>
+                                    <div class="text-justify">
+                                    <p class="card-text">{{i.content|truncatechars:100|safe}}.</p>
+                                  </div>
+                                    <a href="{% url 'blogs:blogpost' i.slug %}" class="btn btn-primary">Contune Reading</a>
+                                  </div>
+                                </div>
+                                {% endfor %}
+                              </div>
+                              </div>
+                            </div>
+                          </section>
+                        <!-- <div class="card-columns">
+
+                            {% for i in allPost %} 
+           
+                            <div class="card">
+                               <img src="/media/{{i.photo}}" class="card-img-top" alt="...">
+                               <div class="card-body">
+                                 <h5 class="card-title">{{i.title}}</h5>
+                                 <p class="card-text">{{i.text|linebreaks|truncatechars:50}}</p>
+                                 <p class="card-text"><small class="text-muted">{{i.created_date}}</small></p>
+                               </div>
+                             </div>
+           
+                            {% endfor %}
+           
+                     </div> -->
+                 </div>
+             </div>
+           
+
+
+         </div>
+     </div>
+
+    
+        
+          
+{% endblock %}
+
+
+
+<!-- <div class="col-md-4">
+    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-200 position-relative">
+      <div class="col p-4 d-flex flex-column position-static">
+        <strong class="d-inline-block mb-2 text-primary">{{i.author}}</strong>
+        <h3 class="mb-0">{{i.title}}</h3>
+        <div class="mb-1 text-muted">Nov 12</div>
+        <p class="card-text mb-auto">{{i.text|linebreaks|truncatechars:50}}</p>
+        <a href="{% url 'blogs:blogpost' i.slug %}" class="stretched-link">Continue reading</a>
+      </div>
+      <div class="col-auto d-none d-lg-block">
+        <img  class="bd-placeholder-img" src="/media/{{i.photo}}" width="200" height="250">
+      </div>
+    </div>
+    
+  </div> -->

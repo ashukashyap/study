@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 mt-4">
+            <div class="card shadow-v2 marginTop-30">
+              <h4 class="card-header bg-primary text-white mb-0">Filter By</h4>
+              <ul class="card-body list-unstyled mb-0">
+               <li class="mb-2"><a href="#">All Courses</a></li>
+               <li class="mb-2"><a href="#">Featured Courses</a></li>
+               <li class="mb-2"><a href="#">Popular Courses</a></li>
+               <li class="mb-2"><a href="#">Starting Soon</a></li>
+               <li class="mb-2"><a href="#">Intermediate</a></li>
+               <li class="mb-2"><a href="#">Advanced</a></li>
+              </ul>
+            </div>
+
+          </div>
+          <div class="col-md-9">
+            <div class="single-item service-item-left">
+              <div class="item-content">
+                
+                   <img src="" alt="">
+                  <h2 class="item-title"></h2>
+                  <h5 class="card-title">{{post.title}}</h5>
+                  <p>{{post.content|safe}}</p>
+              </div>
+         </div>
+          </div>
+        </div>
+
+      </div>
+      
+     
+    
+     
+
+
+
+
+
+  
+
+{% endblock content %}

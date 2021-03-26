@@ -1,0 +1,270 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<!-- Hero section -->
+
+<section class="hero-section set-bg" data-setbg="{% static 'webuni/img/css.jpg'%}">
+    <div class="container-fluid">
+        <div class="hero-text text-white">
+
+
+            {% if request.user.is_authenticated %}
+            <h2>Welcome {% if request.user.profile.is_teacher == True %}
+                To
+                {% endif %} {{ request.user.username|capfirst }}
+
+
+            </h2>
+            {% else %}
+            <h2>Welcome AshuTechStudy</h2>
+
+            {% endif %}
+            <p>Confused on which course to take? I have got you covered. Browse courses and find out
+                the best course for you. Its free!<br>AshuTechStudy is my attempt to teach basics and those coding
+                techniques to people in short time which took me ages to learn.</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <form method="post" action="{% url 'courses:kerko_kurs' %}" class="intro-newslatter" style="margin-top: -85px;"> {% csrf_token %}
+                    <input name="search" type="text" placeholder="Search Course">
+                    <button type="submit" class="site-btn">Search Course</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- Hero section end -->
+
+<!-- categories section -->
+<section class="categories-section spad">
+    <div class="container">
+        <div class="section-title">
+            <h2 id="kurset">Learn all Courses</h2>
+            <p>Some of the latest coding information compiled as coding articles. Keep your
+                programming knowledge up to date with our coding articles.</p>
+        </div>
+        <div class="row">
+            {% for cat in category %}
+            <!-- categorie -->
+            <div data-aos="zoom-in" class="col-lg-4 col-md-6">
+                <div class="categorie-item">
+                    <div class="ci-thumb set-bg" data-setbg="{{ cat.imazhi.url }}"></div>
+                        <div class="ci-text">
+
+                            <h5>{{cat.titulli|capfirst }}</h5>
+
+                            <p>{{ cat.pershkrimi|capfirst }}</p>
+                            <span><a class="btn btn-success" href="/courses/{{ cat.id }}">View Course</a></span>
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- categories section end -->
+{% if request.user.is_authenticated %}
+{% else %}
+<section class="course-section spad">
+    <div class="container">
+        <div class="section-title mb-0">
+            <h2>Introduction Video</h2>
+
+        </div>
+    </div>
+    <div class="course-warp">
+        <div class="row course-items-area">
+            <!-- course -->
+            <div class="mix col-lg-3 col-md-4 col-sm-6 finance">
+                <div class="course-item">
+                    <div class="course-thumb set-bg" data-setbg="{% static 'webuni/img/courses/4.jpg' %}">
+                        <iframe width="100%" height="290" src="https://www.youtube.com/embed/ZrxO4qegCUU?controls=0"
+                                frameborder="0" controls allowfullscreen></iframe>
+
+                    </div>
+                    <div class="course-info">
+                        <div class="course-text">
+                            <h5>knowledge Base</h5>
+                            <p>programming</p>
+                            <div class="students">view</div>
+
+                        </div>
+                        <div class="course-author">
+                            <div class="ca-pic set-bg" data-setbg="{% static 'webuni/img/authors/4.jpg' %}">
+                                <p>admin</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- course -->
+            <div class="mix col-lg-3 col-md-4 col-sm-6 design">
+                <div class="course-item">
+                    <div class="course-thumb set-bg" data-setbg="{% static 'webuni/img/courses/4.jpg' %}">
+                        <iframe width="100%" height="290" src="https://www.youtube.com/embed/mNJ06S60B9k?controls=0"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                    </div>
+                    <div class="course-info">
+                        <div class="course-text">
+                            <h5>Programmar</h5>
+                            <p>Learn</p>
+                            <div class="students">View</div>
+                        </div>
+                        <div class="course-author">
+                            <div class="ca-pic set-bg" data-setbg="{% static 'webuni/img/authors/4.jpg' %}"></div>
+                            <p>Admin</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- course -->
+            <div class="mix col-lg-3 col-md-4 col-sm-6 web">
+                <div class="course-item">
+                    <div class="course-thumb set-bg" data-setbg="{% static 'webuni/img/courses/4.jpg' %}">
+                        <iframe width="100%" height="290" src="https://www.youtube.com/embed/wclSLQEvk3k?controls=0"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                    </div>
+                    <div class="course-info">
+                        <div class="course-text">
+                            <h5>Job Interview</h5>
+                            <p>Learn</p>
+                            <div class="students">View</div>
+                        </div>
+                        <div class="course-author">
+                            <div class="ca-pic set-bg" data-setbg="{% static 'webuni/img/authors/4.jpg' %}"></div>
+                            <p>Admin</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- course -->
+            <div class="mix col-lg-3 col-md-4 col-sm-6 photo">
+                <div class="course-item">
+                    <div class="course-thumb set-bg" data-setbg="{% static 'webuni/img/courses/4.jpg' %}">
+                        <iframe width="100%" height="290" src="https://www.youtube.com/embed/LQFsEwcCO1E?controls=0"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                    </div>
+                    <div class="course-info">
+                        <div class="course-text">
+                            <h5>Web developer</h5>
+                            <p>Learn</p>
+                            <div class="students">View</div>
+                        </div>
+                        <div class="course-author">
+                            <div class="ca-pic set-bg" data-setbg="{% static 'webuni/img/authors/4.jpg' %}"></div>
+                            <p>Admin</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+<!-- course section end -->
+
+<div class="card-columns">
+    {% for i in latest %}
+    
+    <div class="card" style="width: 20rem;">
+      <img src="/media/{{i.photo}}" class="card-img-top" height="200px"  alt="...">
+      <div class="card-body">
+        <a href="{% url 'blogs:blogpost' i.slug %}" class="card-title"><h5>{{i.title}}</h5></a>
+        <div class="text-justify">
+        <p class="card-text">{{i.content|truncatechars:100|safe}}.</p>
+      </div>
+        <a href="{% url 'blogs:blogpost' i.slug %}" class="btn btn-primary">Contune Reading</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+
+{% if request.user.is_authenticated %}
+
+
+<div class="container">
+    <h1 class="text-center">Add Your Course </h1><br>
+    <p class="text-center">Add Your Subject and become a member of the AshuTechStudy Team you are uploade all categorie
+        Course this website Give all permission this Platform</p>
+
+    <div data-aos="fade-right" class="row mt-4 mb-4 bg-light">
+        <div class="col-md-4 text-center">
+            <h3 class="p-4">Add Your Category Course </h3>
+            <a href="{% url 'courses:krijo_klase' %}" class="btn btn-outline-primary m-4">Submit Course</a>
+        </div>
+        <div class="col-md-8">
+            <img class="img-fluid w-100" src="{% static 'webuni/img/categories/4.jpg' %}" alt="">
+        </div>
+    </div>
+
+    <div data-aos="fade-left" class="row mt-4 mb-4 bg-light">
+        <div class="col-md-8">
+            <img class="img-fluid w-100" src="{% static 'webuni/img/categories/2.jpg' %}" alt="">
+        </div>
+
+        <div class="col-md-4 text-center">
+            <h3 class="p-4">Add Category Subject </h3>
+            <a href="{% url 'courses:krijo_lende' %}" class="btn btn-outline-primary m-4">Submit Subject</a>
+        </div>
+    </div>
+
+    <div data-aos="fade-right" class="row mt-4 mb-4 bg-light">
+        <div class="col-md-4 text-center">
+            <h3 class="p-4">Add All Subject Lesson.</h3>
+            <a href="{% url 'courses:krijo_mesim' %}" class="btn btn-outline-primary m-4">Submit Lesson</a>
+        </div>
+        <div class="col-md-8">
+            <img class="img-fluid w-100" src="{% static 'webuni/img/categories/1.jpg' %}" alt="">
+        </div>
+    </div>
+</div>
+
+{% else %}
+
+<section data-aos="zoom-in" class="signup-section spad">
+    <div class="signup-bg set-bg" data-setbg="{% static 'webuni/img/css.jpg' %}"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="signup-warp">
+                    <div class="section-title text-white text-left">
+                        <h2>Contact The Teacher</h2>
+                        <p>Contact me add Your Course.</p>
+                    </div>
+                    <!-- signup form  -->
+                    {% if message %}
+                    <div class="alert alert-{{cls}}">{{message}}</div>
+
+                    {% endif %}
+                    <form action="/kerkesa/" method="post" class="signup-form">{% csrf_token %}
+                        <input type="text" placeholder="Name" name="name">
+                        <input type="text" placeholder="Email" name="e-mail">
+                        <input type="text" placeholder="Number " name="phone">
+                        <button class="site-btn">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+</div>
+</section>
+
+
+
+{% endif %}
+ <!-- signup section end  -->
+ 
+
+{% endblock content %}

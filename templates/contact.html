@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<!-- Page info -->
+<div class="page-info-section set-bg" data-setbg="{% static 'webuni/img/page-bg/4.jpg' %}">
+  <div class="container">
+    <div class="site-breadcrumb">
+      <a href="#">Home</a>
+      <span>Contact</span>
+    </div>
+  </div>
+</div>
+<!-- Page info end -->
+
+
+<!-- search section -->
+<section class="search-section ss-other-page">
+  <div class="container">
+    <div class="search-warp">
+      <div class="section-title text-white">
+        <h2><span>Search your course</span></h2>
+      </div>
+      <div class="row">
+        <div class="col-lg-10 offset-lg-1">
+          <!-- search form -->
+          <form class="course-search-form">
+            <input type="text" placeholder="Course">
+            <input type="text" class="last-m" placeholder="Category">
+            <button class="site-btn btn-dark">Search Couse</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- search section end -->
+
+
+
+<!-- Page -->
+<section class="contact-page spad pb-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="contact-form-warp">
+          <div class="section-title text-white text-left">
+            <h2>Get in Touch</h2>
+            <p> Contact AshuTechStudy For Any Informaction </p>
+          </div>
+          <form method="post" action="/contact/" class="contact-form">{% csrf_token %}
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="text" name="email" placeholder="Your E-mail" required>
+            <input type="text" name="subject" placeholder="Subject" required>
+            <textarea  name="message" placeholder="Message" required></textarea>
+            <button type="submit" class="site-btn">Sent Message</button>
+          </form>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="contact-info-area">
+          <div class="section-title text-left p-0">
+            <h2>Contact Info</h2>
+            <p>Contact For Any Informaction.</p>
+          </div>
+          <div class="phone-number">
+            <span>Direct Line</span>
+            <h2>+9148091356855</h2>
+          </div>
+          <ul class="contact-list">
+            <li>Saharanpur <br>UttarPardesh</li>
+            <li>+9148091356855</li>
+            <li>ashutechstudy@gmail.com</li>
+          </ul>
+          <div class="social-links">
+            <a href="https://in.pinterest.com/aashuk012/"><i class="fa fa-pinterest fa-2x"></i></a>
+            <a href="https://www.facebook.com/AshuKashyap-112885700424232"><i class="fa fa-facebook fa-2x"></i></a>
+            <a href="https://twitter.com/aashukashyap6"><i class="fa fa-twitter fa-2x"></i></a>
+            <a href="https://www.linkedin.com/in/ashu-kashyap-174505136/"><i class="fa fa-linkedin fa-2x"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Page end -->
+
+{% endblock content %}
