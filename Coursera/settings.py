@@ -26,7 +26,7 @@ SECRET_KEY = '5o)5cgi62(z+=u$%m6-#d02nar7xf=5fml6!1&l(ue0imbrnd%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['165.22.191.38']
 
 
 # Application definition
@@ -92,10 +92,20 @@ WSGI_APPLICATION = 'Coursera.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'blogdb',
+        'USER': 'blog_admin',
+        'PASSWORD': 'testing123',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -141,7 +151,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static')
     ]
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 
 #media
 MEDIA_URL = '/media/'
